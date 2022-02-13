@@ -1,5 +1,5 @@
-defmodule Task1_P1 do
-    def kind(a,b,c) do
+defmodule Triangle do
+    def kind(a \\ 0,b \\ 0,c \\ 1000000000) do
         case {a,b,c} do
             {a,b,c} when( (a + b>= c) and (a+c >= b) and (b+c >=a))->
                 #kind1(a,b,c)
