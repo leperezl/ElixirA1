@@ -5,3 +5,6 @@ map = Map.put(map, "key", 1)
 
 #split every letter
 String.splitter("",trim:true)
+
+nums = {1,2,3,4,5,6}
+Binar.search({1,2,3,4,5,6},4)
