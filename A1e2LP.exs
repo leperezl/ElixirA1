@@ -59,9 +59,13 @@ defmodule Robot do
             {a,{b,c}} == {:east, {b,c}} and h == "A" -> run({:east, {b+1,c}}, t )
             {a,{b,c}} == {:west, {b,c}} and h == "A" -> run({:west, {b-1,c}}, t)
         end
-            
-
     end
         #instruc  = R  and ppsotion = :north - > :east
-    
+    def direction({a,{b,c}}) do
+        a
+    end
+
+    def position({a,{b,c}}) do
+        {b,c}
+    end
 end
