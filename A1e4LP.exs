@@ -7,7 +7,7 @@ defmodule Binar do
     end
 
     def search(nums, target, first, last) do
-        mid = div((last-first),2)
+        mid = div((last+first),2)
         cond do
 
     end
