@@ -20,6 +20,14 @@ defmodule Store do
         itemF = Map.update!(item, :quantity_by_size, &(Map.delete(&1, size)))
         [itemF | inv]
     end
+
+    def sort_by_price(inv) do
+        Enum.sort_by(inv, &(&1.price))
+    end
+
+    def increase_quantity( item, n) do
+        itemF = Map.update!(item, :quantity_by_size, &(Map.delete(&1, n)))
+    end
     
 
     def search([], name) do
