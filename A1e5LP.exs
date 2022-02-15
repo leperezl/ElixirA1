@@ -26,7 +26,18 @@ defmodule Store do
     end
 
     def increase_quantity( item, n) do
-        itemF = Map.update!(item, :quantity_by_size, &(Map.delete(&1, n)))
+        keys = Map.keys(Map.get(item, :quantity_by_size))
+        itemF = increase(keys,n,item)
+    end
+
+    def increase([h|t], n, item) do
+        quants =Map.update!(Map.get(item, :quantity_by_size), h, &(&1 + n))
+        item =Map.put(item, :quantity_by_size, quants)
+        increase(t,n,item)
+    end
+
+    def increase( [], n, item) do
+        item
     end
     
 
@@ -36,9 +47,23 @@ defmodule Store do
 
     def search([h|t], name) do
         cond do
-            name == Map.get(h,:name) -> h
+            name == Map.get(h,name) -> h
             true -> search(t,name)
         end
+    end
+     
+    def total_quantity(item) do
+        keys = Map.keys(Map.get(item, :quantity_by_size))
+        reply = total(keys, item,0)
+    end
+
+    def total([h|t], item, acc) do
+        acc= Map.get(Map.get(item, :quantity_by_size), h) + acc
+        total(t,item,acc)
+    end
+
+    def total( [], item, acc) do
+        acc
     end
 
 end
